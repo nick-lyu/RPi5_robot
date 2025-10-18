@@ -12,9 +12,9 @@ UDP_PORT = int(os.getenv('UDP_PORT'))
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 picam2 = Picamera2()
+# Аппаратное кодирование!
 config = picam2.create_video_configuration(
-    main={"size": (640, 480)},
-    format="mjpeg"  # Аппаратное кодирование!
+    main={"size": (640, 480), "format": "mjpeg"}
 )
 picam2.configure(config)
 picam2.start()
