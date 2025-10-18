@@ -14,7 +14,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 picam2 = Picamera2()
 config = picam2.create_video_configuration(
     main={"size": (640, 480)},
-    encode="mjpeg"  # Аппаратное кодирование!
+    # encode="mjpeg"  # Аппаратное кодирование!
 )
 picam2.configure(config)
 picam2.start()
