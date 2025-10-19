@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>RPi5 Robot</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+  </head>
+  <body>
+    <div class="flex-container">
+    <h2>Camera</h2>
+    <img src="/stream" style="width:640px;height:480px;" id="cam">
+    <p>Use WASD keys to move</p>
+    <script>
+      const ws = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws");
+      document.addEventListener("keydown", e => {
+        const key = e.key.toUpperCase();
+        if ("WASD".includes(key)) {
+          ws.send(key);
+        }
+      });
+      ws.onmessage = (ev) => console.log("server:", ev.data);
+    </script>
+    </div>
+  </body>
+</html>

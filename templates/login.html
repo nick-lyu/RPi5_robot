@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+  <title>RPi5 Robot</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+  </head>
+  <body>
+    <div class="flex-container">
+    <div>
+      <h3>RPi5 ROBOT CONTROL PANEL</h3>
+    </div>
+    <form method="post" action="/login">
+      <input name="username" placeholder="username"><br>
+      <input name="password" placeholder="password" type="password"><br>
+      <button type="submit">Login</button>
+    </form>
+    </div>
+  </body>
+</html>
