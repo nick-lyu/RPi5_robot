@@ -1,12 +1,15 @@
+import os
 import socket
 import cv2
 import numpy as np
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def camera_server():
     print('Start camera server...')
-    UDP_IP = "0.0.0.0"
-    UDP_PORT = 5005
+    UDP_IP = os.getenv('L_UDP_IP')
+    UDP_PORT = os.getenv('UDP_PORT')
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((UDP_IP, UDP_PORT))
@@ -27,8 +30,8 @@ def camera_server():
 
 def camera_server_fastapi(frame_queue):
     print('Start camera server...')
-    UDP_IP = "0.0.0.0"
-    UDP_PORT = 5005
+    UDP_IP = os.getenv('L_UDP_IP')
+    UDP_PORT = os.getenv('UDP_PORT')
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((UDP_IP, UDP_PORT))

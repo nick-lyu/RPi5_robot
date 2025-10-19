@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect, Form, Response
 from fastapi.responses import HTMLResponse, StreamingResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -8,17 +9,18 @@ from gpiozero import Servo
 from time import sleep
 import threading
 from queue import Queue
+from dotenv import load_dotenv
 
 from camera_server import camera_server_fastapi
 
-
+load_dotenv()
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # ----- VERY SIMPLE IN-MEM AUTH (demo only) -----
-USER = "admin"
-PASSWORD = "strongpassword"
+USER = os.getenv('LOGIN')
+PASSWORD = os.getenv('PASS')
 
 sessions = set()  # set of session ids
 
